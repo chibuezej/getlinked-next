@@ -7,14 +7,22 @@ import FacebookSvg from "@/app/assets/icons/Vector (1).svg";
 import Xsvg from "@/app/assets/icons/Vector (2).svg";
 import LinkdlnSvg from "@/app/assets/icons/ri_linkedin-fill.svg";
 import InstagramSvg from "@/app/assets/icons/mdi_instagram.svg";
-import ColoredStarSvg from "@/app/assets/icons/sata gra.svg";
+import ColoredStarSvg from "@/app/assets/icons/coloredStar.svg";
+import Star from "@/app/assets/icons/star.svg";
 
 function Footer() {
   return (
     <footer
-      className={`py-8 bg-[#100B20] font-montserrat text-white lg:px-24 px-4`}
+      className={`py-6 bg-[#100B20] font-montserrat text-white lg:px-24 px-4`}
     >
       <section className={`flex flex-wrap items-start`}>
+        <div className="pr-10 pt-10">
+            <Image
+          src={Star}
+          alt="Star Icon"
+          className={`w-[20px]`}
+        />
+        </div>
         <section className={`lg:w-[40%] w-full`}>
           <Image
             src={Logo}
@@ -24,8 +32,8 @@ function Footer() {
             className={`w-[8rem]`}
           />
           <p className={`text-sm mt-2`}>
-            Getlinked Tech Hackathon is technology innovation program
-            established by a group of organizations with the aim of showcasing
+            Getlinked Tech Hackathon is technology innovation program <br />{" "}
+            established by a group of organizations with the aim of showcasing <br />{" "}
             young and talented individuals in the field of technology
           </p>{" "}
           <br /> <br /> <br />
@@ -80,15 +88,13 @@ function Footer() {
               </div>
             </section>
           </div>
-          <div className={`flex space-x-5  my-2`}>
+          <div className={`flex space-x-5  my-1`}>
             <p className={`text-[#D434FE] text-sm`}>Follow Us</p>
             <section className={`flex space-x-4 items-center`}>
               <Link href={`/`}>
                 <Image
                   src={InstagramSvg}
                   alt="Instagram Icon"
-                  width={24}
-                  height={24}
                   className={`w-[20px]`}
                 />
               </Link>
@@ -96,8 +102,6 @@ function Footer() {
                 <Image
                   src={Xsvg}
                   alt="Instagram Icon"
-                  width={24}
-                  height={24}
                   className={`w-[18px]`}
                 />
               </Link>
@@ -105,8 +109,6 @@ function Footer() {
                 <Image
                   src={FacebookSvg}
                   alt="Instagram Icon"
-                  width={24}
-                  height={24}
                   className={`w-[10px]`}
                 />
               </Link>
@@ -114,8 +116,6 @@ function Footer() {
                 <Image
                   src={InstagramSvg}
                   alt="Instagram Icon"
-                  width={24}
-                  height={24}
                   className={`w-[20px]`}
                 />
               </Link>
@@ -124,7 +124,7 @@ function Footer() {
         </section>
       </section>{" "}
       <br />
-      <div className="flex items-center justify-center py-8">
+      <div className="flex items-center justify-center py-6">
         <Image src={ColoredStarSvg} alt="Colored Star" className="" />
       </div>
       <p className={`w-full text-center text-white font-montserrat text-xs`}>

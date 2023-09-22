@@ -48,7 +48,7 @@ function Hero() {
           </p>
         </div>
         <div className="mb-8">
-          <Button label="Subscribe" />
+          <Button label="Register" />
         </div>
 
         <p className="text-[64px] font-normal">{formatTime(countdown)}</p>

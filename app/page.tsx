@@ -5,6 +5,7 @@ import Introduction from "./components/introduction/Introduction";
 import Rules from "./components/Guidelines/Rules";
 import Privacy from "./components/Privacy";
 import BorderBottom from "./components/atom/BorderBottom";
+import Partners from "./components/Partners";
 
 
 function page() {
@@ -13,6 +14,7 @@ function page() {
       <Hero />
       <Introduction />
       <Rules />
+      <Partners />
       <BorderBottom />
       <Privacy />
       <Footer />

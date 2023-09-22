@@ -31,7 +31,7 @@ function Navigation() {
             );
           })}
           <div className="ml-12">
-            <Button label="Subscribe" />
+            <Button label="Register" />
           </div>
         </div>
       </nav>
