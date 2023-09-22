@@ -7,11 +7,11 @@ import ColoredStar from "@/app/assets/icons/coloredStar.svg";
 const Price = () => {
   return (
     <section>
-        {/* <div className=" p-12">
+      {/* <div className=" p-6">
       <Image src={ColoredStar} alt="Colored Star" />
       </div> */}
       <div className="relative px-10 md:px-32 lg:grid grid-cols-2 py-20 items-center bg-center bg-cover">
-        <div className="">
+        <div className="hidden lg:block">
           <Image src={Trophy} alt="Trophy" width={548} height={718} priority />
         </div>
         <div className="space-y-14">
@@ -27,14 +27,11 @@ const Price = () => {
               </p>
             </div>
           </div>
+          <div className="block lg:hidden ">
+            <Image src={Trophy} alt="Trophy" priority />
+          </div>
           <div className="min-w-[45vw]">
-            <Image
-              src={Medal}
-              alt="Vercel Logo"
-              width={664}
-              height={563}
-              priority
-            />
+            <Image src={Medal} alt="Vercel Logo" priority />
           </div>
         </div>
       </div>
