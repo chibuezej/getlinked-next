@@ -1,8 +1,8 @@
 import React from "react";
 import logo from "@/app/assets/icons/getlinked.svg";
-import Button from "@/app/constant/Button";
 import Image from "next/image";
 import Link from "next/link";
+import Button from "@/app/constant/Button";
 
 const data = [
   { name: "Timelines", href: "/" },
