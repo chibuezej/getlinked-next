@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+*::-webkit-scrollbar {
+  width: 0px;
+  background-color: transparent; 
+}
+
+@layer utilities {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply box-border w-full h-full m-0 p-0 overflow-x-hidden;
+  }
+}
+
 @font-face {
   font-family: "montserrat";
   src: url('/fonts/Montserrat-Regular.ttf');
