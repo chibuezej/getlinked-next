@@ -1,8 +1,9 @@
 import React from "react";
-import Hero from "../app/components/hero/hero";
+import Hero from "./components/hero/hero";
 import Footer from "../app/components/footer/Footer";
 import Introduction from "./components/introduction/Introduction";
 import Rules from "./components/Guidelines/Rules";
+import Privacy from "./components/Privacy";
 
 
 function page() {
@@ -11,6 +12,7 @@ function page() {
       <Hero />
       <Introduction />
       <Rules />
+      <Privacy />
       <Footer />
     </div>
   );

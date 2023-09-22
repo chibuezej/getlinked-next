@@ -1,4 +1,4 @@
-import logo from "@/app/assets/icons/navbar/getlinked.svg"
+import logo from "@/app/assets/icons/getlinked.svg"
 import Button from "@/app/constant/Button";
 import Image from "next/image";
 import Link from "next/link";
