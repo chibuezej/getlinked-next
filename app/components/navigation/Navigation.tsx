@@ -1,33 +1,40 @@
+import logo from "@/app/assets/icons/navbar/getlinked.svg"
+import Button from "@/app/constant/Button";
+import Image from "next/image";
+import Link from "next/link";
 
+const data = [
+    { name: 'Timelines', href: '/' },
+    { name: 'Overview', href: '/Overview' },
+    { name: 'FAQs', href: '/FAQs'},
+    { name: 'Contact', href: '/Contact' },
+  ];
 
 export default function Navbar() {
-//   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-//   const data = [
-//     { name: 'Devices', href: '/' },
-//     { name: 'Keza Business', href: `/${country}/business` },
-//     { name: 'Company', href: `/${country}/company` },
-//     { name: 'Blog', href: 'https://blog.keza.africa/' },
-//   ];
-
   return (
-    <header className="w-full bg-transparent z-50 overflow-x-hidden ">
+    <header className="bg-[#150e28] text-white ">
       <nav className="flex justify-between items-center py-4 px-6">
       <div>
-        {/* <h1 className='text-[36px]'>get<span className='text-[#D434FE]'>Linked</span></h1> */}
-        {/* <img src="../../assets/getLinked.svg" alt="get-linked" />
-         */}
-        {/* <Image src={Logo} alt="get-linked" /> */}
+        <Image src={logo} alt="get-linked" />
       </div>
 
-      <div className="flex justify-evenly gap-10">
-        <ul className="flex justify-between items-center gap-6 text-[16px]">
-          <li>Timeline</li>
-          <li>Overview</li>
-          <li>FAQs</li>
-          <li>Contact</li>
-        </ul>
-       button
+      <div className="flex justify-evenly items-center gap-12">
+      {data.map((item: any, index: any) => {
+              return (
+                <Link
+                  key={index}
+                  href={item.href}
+                  className="p3-medium  hover:scale-110 hover:text-gray-700"
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
+              <div className="ml-12">
+        <Button label="Subscribe"/>
+    </div>
       </div>
+    
     </nav>
     </header>
   );
