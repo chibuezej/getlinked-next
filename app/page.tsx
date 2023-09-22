@@ -8,6 +8,7 @@ import BorderBottom from "./components/atom/BorderBottom";
 import Judgement from "./components/judgement/Judgement";
 import Partners from "./components/Partners";
 import Price from "./components/Price";
+import FrequentlyAsked from "./components/frequentlyAsked/FrequentlyAsked";
 
 
 function page() {
@@ -17,6 +18,7 @@ function page() {
       <Introduction />
       <Rules />
       <Judgement />
+      <FrequentlyAsked />
       <Price />
       <Partners />
       <BorderBottom />

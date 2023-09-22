@@ -32,41 +32,54 @@ function Hero() {
   }, [countdown]);
 
   return (
-    <div className="flex flex-col lg:flex-row lg:px-24 px-4">
-      <div className="flex-1">
-        <div className="mb-6">
-          <h1 className="text-[80px] font-bold">getlinked Tech</h1>
-          <h1 className="flex items-center gap-4 text-[80px] font-bold">
-            Hackathon 1.0
-            <span>
-              <Image src={chain} alt="chain" />
-            </span>
+    <>
+      <h1
+        className={`lg:text-xl text-base italic font-bold w-full text-right relative lg:px-14 px-4 py-5`}
+      >
+        Igniting a Revolution in HR Innovation
+        <Image
+          src={vector}
+          alt="vector-line"
+          width={253}
+          height={253}
+          className={`absolute w-[135px] top-[70%] lg:right-14 right-4`}
+        />
+      </h1>
+      <div
+        className={`lg:px-14 px-4 border-b border-b-[#FFFFFF2E] flex lg:flex-row flex-col items-center justify-center`}
+      >
+        <div className="flex-1">
+          <div className="mb-6">
+          <h1 className={`lg:text-7xl text-5xl font-extrabold lg:text-left text-center font-clash-display`}>
+            getlinked Tech Hackathon<span className={`text-[#D434FE]`}>1.0</span>
           </h1>
-          <p className="text-[20px] font-normal">
-            Participate in getlinked tech Hackathon 2023 stand a chance to win a
-            Big prize
-          </p>
-        </div>
-        <div className="mb-8">
-          <Button label="Register" />
+          <p className={`text-sm py-2 w-[23rem] lg:text-left text-center max-w-full`}>
+            Participate in getlinked tech Hackathon 2023 stand a chance to win a Big prize
+          </p> 
+          </div>
+          <div className="mb-8">
+            <Button label="Register" />
+          </div>
+
+          <p className="text-[64px] font-normal">{formatTime(countdown)}</p>
         </div>
 
-        <p className="text-[64px] font-normal">{formatTime(countdown)}</p>
-      </div>
-
-      <div className="flex-1">
-        <h1 className="text-[36px] font-semiBold">
-          Igniting a Revolution in HR Innovation
-        </h1>
-        <Image src={vector} alt="vector-line" />
-        <div className="max-w-[828px] max-h-[715px]">
-          <Image src={hero} alt="Boy wearing Hd lens" />
+        <div className={`flex-1 lg:mt-0 mt-8`}>
+          <Image
+            src={hero}
+            alt="Hero Image"
+            height={200}
+            width={200}
+            className={`w-full object-cover rounded-md object-center`}
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8/eCBPQMRgHFUIX0VAgB4UB0vFSLebwAAAABJRU5ErkJggg=="
+          />
         </div>
-        <div className="absolute top-[65px]">
-          <Image src={stars} alt="stars" />
+          <div className="relative top-[2rem]">
+            <Image src={stars} alt="stars" />
+          </div>
         </div>
-      </div>
-    </div>
+    </>
   );
 }
 

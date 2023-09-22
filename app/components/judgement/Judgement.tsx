@@ -3,7 +3,7 @@ import React from 'react'
 import judge from "@/app/assets/images/judge.svg"
 import Image from 'next/image';
 import Button from '@/app/constant/Button';
-
+import star from "@/app/assets/icons/star.svg"
 const dummyEvaluations = [
     {
       category: 'Innovation and Creativity',
@@ -54,11 +54,11 @@ const dummyEvaluations = [
 
         <div className={`lg:w-[50%] lg:ml-5 w-full relative lg:px-7`}>
           <Image
-            src={`/icons/star.svg`}
+            src={star}
             alt="Star Icon"
             width={26}
             height={32}
-            className={`w-[26px] h-[32px] block lg:hidden absolute -top-10 right-[47%]`}
+            className={`w-[26px] h-[32px] block lg:relative absolute -top-10 right-[47%]`}
           />
           <h2 className={`lg:text-3xl text-2xl lg:text-left text-center lg:w-[50%] py-3 font-bold font-clash-display`}>
             Judging Criteria <span className={`text-[#D434FE]`}>Key attributes</span>

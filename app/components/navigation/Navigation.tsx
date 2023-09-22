@@ -13,7 +13,7 @@ const data = [
 
 function Navigation() {
   return (
-    <header className="bg-[#150e28] text-white ">
+    <header className="bg-[#150e28] text-white border-b  border-opacity-18">
       <nav className="flex justify-between items-center py-4 px-6">
         <div>
           <Image src={logo} alt="get-linked" />
