@@ -4,6 +4,7 @@ import Footer from "../app/components/footer/Footer";
 import Introduction from "./components/introduction/Introduction";
 import Rules from "./components/Guidelines/Rules";
 import Privacy from "./components/Privacy";
+import BorderBottom from "./components/atom/BorderBottom";
 
 
 function page() {
@@ -12,6 +13,7 @@ function page() {
       <Hero />
       <Introduction />
       <Rules />
+      <BorderBottom />
       <Privacy />
       <Footer />
     </div>
