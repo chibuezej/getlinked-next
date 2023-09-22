@@ -32,7 +32,7 @@ function Hero() {
   }, [countdown]);
 
   return (
-    <div className="flex lg:px-24 px-4">
+    <div className="flex flex-col lg:flex-row lg:px-24 px-4">
       <div className="flex-1">
         <div className="mb-6">
           <h1 className="text-[80px] font-bold">getlinked Tech</h1>
