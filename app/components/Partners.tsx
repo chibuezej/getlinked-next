@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import PartnerImage from "@/app/assets/images/Partner and sponsors section.png";
 import ColoredStar from "@/app/assets/icons/ColoredStar.svg";
+import BorderBottom from "./atom/BorderBottom";
 
 const Partners = () => {
   return (
@@ -24,6 +25,7 @@ const Partners = () => {
           </div>
         </div>
       </div>
+      <BorderBottom />
     </section>
   );
 };
