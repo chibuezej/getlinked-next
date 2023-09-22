@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import PartnerImage from "@/app/assets/images/Partner and sponsors section.png";
-import ColoredStar from "@/app/assets/icons/ColoredStar.svg";
-import BorderBottom from "./atom/BorderBottom";
+import ColoredStar from "@/app/assets/icons/coloredStar.svg";
+import BorderBottom from "@/app/components/atom/BorderBottom";
 
 const Partners = () => {
   return (
