@@ -11,7 +11,7 @@ const gradientStyle = {
 
 function Button(props: GradientButtonProps) {
   return (
-    <div style={gradientStyle} className="py-2 px-8 text-[16px] max-w-[172px]">
+    <div style={gradientStyle} className="py-2 px-8 text-[16px] max-w-[172px] rounded-sm">
       {props.label}
     </div>
   );
