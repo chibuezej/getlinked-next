@@ -6,6 +6,8 @@ import Rules from "./components/Guidelines/Rules";
 import Privacy from "./components/Privacy";
 import BorderBottom from "./components/atom/BorderBottom";
 import Judgement from "./components/judgement/Judgement";
+import Partners from "./components/Partners";
+import Price from "./components/Price";
 
 
 function page() {
@@ -15,6 +17,8 @@ function page() {
       <Introduction />
       <Rules />
       <Judgement />
+      <Price />
+      <Partners />
       <BorderBottom />
       <Privacy />
       <Footer />
