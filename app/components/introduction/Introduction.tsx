@@ -5,7 +5,7 @@ import vector from "@/app/assets/images/vector2.svg"
 
 function Introduction() {
   return (
-    <div className={`py-16 border-b border-b-[#FFFFFF2E] lg:px-28 px-4 flex lg:flex-row flex-col items-center`}>
+    <div className={`py-16 border-b border-b-[#FFFFFF2E] lg:px-28 px-4 flex lg:flex-row flex-col items-center`} id="overview">
     <div className={`flex-1`}>
       <Image
         src={bulb}

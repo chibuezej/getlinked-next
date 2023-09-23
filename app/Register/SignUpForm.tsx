@@ -1,11 +1,15 @@
+"use client"
+
 import React, { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Button from "../constant/Button";
 import Guy from "@/app/assets/icons/guy.svg";
 import Lady from "@/app/assets/icons/lady.svg";
+import modal from "@/app/assets/images/modal.svg";
 
 function SignUpForm() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     team_name: "",
     email: "",
@@ -15,10 +19,12 @@ function SignUpForm() {
     privacy_policy_accepted: false,
     category: "",
   });
+  if (isModalOpen) {
+    console.log("jcndcndnc ");
+  }
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-
     try {
       const response = await axios.post(
         "http://localhost:3000/hackathon/registration",
@@ -28,11 +34,16 @@ function SignUpForm() {
       // Handle the response here if needed
       console.log("API Response:", response.data);
 
-      // You can also navigate to a success page or show a success message
+      // Show the modal upon successful form submission
+      setIsModalOpen(true);
     } catch (error) {
       // Handle errors here
       console.error("Error:", error);
     }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   console.log(formData, "formData");
@@ -195,12 +206,32 @@ function SignUpForm() {
           </div>
         </div>
         <div className="w-full hidden lg:flex justify-center items-center">
-          <Button label="Register Now" onSubmit={() => {}} width="w-full" />
+          <button onClick={() => setIsModalOpen(true)} className="py-2 px-8 text-[16px] rounded-sm cursor-pointer bg-button-gradient">Submit</button>
         </div>
         <div className="w-full flex lg:hidden justify-center items-center">
-          <Button label="Submit" width="w-[372px]" onSubmit={handleSubmit} />
+          <button onClick={() => setIsModalOpen(true)} className="py-2 px-8 text-[16px] rounded-sm cursor-pointer bg-button-gradient">submit</button>
         </div>
       </form>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="flex flex-col items-center justify-center w-[80%] max-w-lg p-4 rounded-lg shadow-lg  bg-[#150E28]">
+            <Image src={modal} alt="modal" />
+            <h2 className="text-2xl font-bold mb-4">
+             
+            </h2>
+            <h2 className="text-2xl font-bold mb-4">
+            Congratulations
+            </h2>
+            <p>
+              Yes, it was easy and you did it! check your mail box for next step
+            </p>
+            <div className="mt-4 flex justify-center">
+              <button onClick={closeModal} className="py-2 px-28 text-[16px] w-full rounded-sm cursor-pointer bg-button-gradient">Back</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -8,6 +8,7 @@ import stars from "@/app/assets/images/stars.svg";
 import vector from "@/app/assets/images/vector.svg";
 import chain from "@/app/assets/images/chain.svg";
 import bulb from "@/app/assets/icons/bulb.svg";
+import fire from "@/app/assets/icons/fire.svg"
 import Link from "next/link";
 
 function Hero() {
@@ -60,7 +61,12 @@ function Hero() {
                 <Image src={bulb} alt="bulb" />
               </span>{" "}
               Hackathon<span className={`text-[#D434FE]`}>1.0</span>
+
             </h1>
+            <div className="flex relative top-5">
+              <Image src={chain} alt="chain" />
+              <Image src={fire} alt="fire" />
+            </div>
             <p
               className={`text-sm py-2 w-[23rem] lg:text-left text-center max-w-full`}
             >
