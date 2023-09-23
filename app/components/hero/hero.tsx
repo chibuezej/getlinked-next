@@ -66,7 +66,7 @@ function Hero() {
               a Big prize
             </p>
           </div>
-          <div className="flex items-center justify-centermb-8">
+          <div className="flex items-center justify-center lg:justify-start mb-8">
             <Button label="Register" />
           </div>
 

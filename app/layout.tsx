@@ -2,7 +2,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Navbar from './components/navigation/Navigation'
-import Footer from './components/footer/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,9 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className} style={{padding: 'lg:px-24 px-4'}}>
-        <div className='bg-main_bg bg-repeat-y font-montserrat text-white'>
-        <Navbar />
+      <body className={inter.className} style={{padding: 'lg:px-24 px-4', backgroundColor: '#150E28'}}>
+        <div className='font-montserrat text-white'>
+       <Navbar />
         {children}
         </div>
         </body>
