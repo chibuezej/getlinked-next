@@ -2,6 +2,9 @@ import React from "react";
 
 interface GradientButtonProps {
   label: string;
+  onSubmit?: (e: any) => void;
+  width?: string;
+  onClick?: () => void;
 }
 
 const gradientStyle = {

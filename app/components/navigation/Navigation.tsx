@@ -34,7 +34,7 @@ const Navbar = (): React.ReactNode => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const pushToRegister = () => router.push('/register');
+  const pushToRegister = () => router.push('/Register');
 
   return (
     <header className={`border-b relative font-montserrat text-white border-b-[#FFFFFF2E] bg-transparent flex items-center justify-between py-7 lg:px-16 px-4`}>

@@ -9,6 +9,7 @@ import Judgement from "./components/judgement/Judgement";
 import Partners from "./components/Partners";
 import Price from "./components/Price";
 import FrequentlyAsked from "./components/frequentlyAsked/FrequentlyAsked";
+import Timeline from "./components/Timeline";
 
 
 function page() {
@@ -19,6 +20,7 @@ function page() {
       <Rules />
       <Judgement />
       <FrequentlyAsked />
+      <Timeline />
       <Price />
       <Partners />
       <BorderBottom />

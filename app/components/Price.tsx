@@ -4,7 +4,7 @@ import Trophy from "@/app/assets/images/trophy.png";
 import Medal from "@/app/assets/images/Rewards.png";
 import ColoredStar from "@/app/assets/icons/coloredStar.svg";
 
-const Price = () => {
+function Price () {
   return (
     <section>
       {/* <div className=" p-6">

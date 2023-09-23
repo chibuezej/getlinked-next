@@ -8,6 +8,8 @@ import stars from "@/app/assets/images/stars.svg";
 import vector from "@/app/assets/images/vector.svg";
 import chain from "@/app/assets/images/chain.svg";
 import bulb from "@/app/assets/icons/bulb.svg";
+import Link from "next/link";
+
 function Hero() {
   const initialTime = 3600;
   const [countdown, setCountdown] = useState(initialTime);
@@ -72,7 +74,6 @@ function Hero() {
 
           <p className="text-[64px] font-normal">{formatTime(countdown)}</p>
         </div>
-
         <div className={`flex-1 lg:mt-0 mt-8`}>
           <Image
             src={hero}
