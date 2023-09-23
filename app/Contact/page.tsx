@@ -84,7 +84,6 @@ function Page() {
           Get in touch
         </h1>
         <br />
-
         <div className={`text-base`}>
           <p className={`lg:w-[10rem] w-full`}>Contact Information</p> <br />
           <p className={`lg:w-[10rem] w-full`}>
@@ -174,7 +173,6 @@ function Page() {
               className={`border rounded-md text-sm w-full py-3 px-6 outline-none border-white bg-transparent`}
             />
             {emailError && <p className="text-red-500">{emailError}</p>}
-
             <textarea
               placeholder="Message"
               name="message"
@@ -182,7 +180,6 @@ function Page() {
               onChange={(e) => setMessage(e.target.value)}
               className={`border rounded-md text-sm w-full min-h-[7rem] max-h-[7rem] py-3 px-6 outline-none border-white bg-transparent`}
             ></textarea>
-
             <div className={`w-[9rem] mx-auto mt-7`}>
               <div onClick={handleSubmit}>
                 <Button label={loading ? "Submitting..." : "Submit"} />
