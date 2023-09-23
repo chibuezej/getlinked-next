@@ -1,7 +1,5 @@
 "use client"
-
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
 import RegisterImage from "@/app/assets/images/3d-graphic-designer-showing-thumbs-up-png 1.png";
 import ColoredStar from "@/app/assets/icons/coloredStar.svg";
 import Star from '@/app/assets/icons/star.svg';
