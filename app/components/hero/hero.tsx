@@ -7,6 +7,7 @@ import hero from "@/app/assets/images/hero.svg";
 import stars from "@/app/assets/images/stars.svg";
 import vector from "@/app/assets/images/vector.svg";
 import chain from "@/app/assets/images/chain.svg";
+import Link from "next/link";
 
 function Hero() {
   const initialTime = 3600;
@@ -57,13 +58,13 @@ function Hero() {
             Participate in getlinked tech Hackathon 2023 stand a chance to win a Big prize
           </p> 
           </div>
+          <Link href="/Register">
           <div className="mb-8">
             <Button label="Register" />
           </div>
-
+        </Link>
           <p className="text-[64px] font-normal">{formatTime(countdown)}</p>
         </div>
-
         <div className={`flex-1 lg:mt-0 mt-8`}>
           <Image
             src={hero}
