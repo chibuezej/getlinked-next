@@ -8,6 +8,8 @@ import Star from '@/app/assets/icons/star.svg';
 import Image from "next/image";
 import SignUpForm from "./SignUpForm";
 
+
+
 function Page() {
   return (
     <div className="w-full h-full main_bg relative p-[8%] overflow-clip">

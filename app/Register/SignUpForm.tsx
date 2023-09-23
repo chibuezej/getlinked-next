@@ -1,11 +1,59 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import Image from "next/image";
 import Button from "../constant/Button";
 import Guy from "@/app/assets/icons/guy.svg";
 import Lady from "@/app/assets/icons/lady.svg";
 
 function SignUpForm () {
+
+  const [data, setData] = useState({
+   "id": "",
+    "email": "",
+    "team_name": "",
+    "phone_number": "",
+    "project_topic": "",
+    "group_size": "",
+    "privacy_poclicy_accepted": true,
+    "date_created": "",
+    "last_updated": "",
+    "category": ""
+  });
+
+  // const handleChange = (e: any) => {
+  //   const { name, value } = e.target;
+  //   setData({ ...data, [name]: value });
+
+  //   console.log(data);
+  // }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const { name, value } = e.target;
+  setData({ ...data, [name]: value });
+
+  console.log(data);
+}
+
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  axios.post("http://localhost:3000/hackathon/registration", {
+    "id": "",
+    "email": "",
+    "team_name": "",
+    "phone_number": "",
+    "project_topic": "",
+    "group_size": "",
+    "privacy_poclicy_accepted": true,
+    "date_created": "",
+    "last_updated": "",
+    "category": ""
+  })
+  console.log(data);
+  // navigate("/Register");
+}
+
+
   return (
     <div className="min-w-full min-h-full main_bg p-[4%] flex flex-col gap-8">
       <form className="w-full h-fit flex flex-col gap-10">
@@ -39,6 +87,8 @@ function SignUpForm () {
                 type="text"
                 name=""
                 id=""
+                onChange={handleChange}
+                value={data.team_name}
                 className="h-[47px] p-[11px] w-full border-1 outline-none input lg:text-xs"
               />
             </div>
@@ -49,6 +99,8 @@ function SignUpForm () {
                 type="number"
                 name=""
                 id=""
+                value={data.phone_number}
+                onChange={handleChange}
                 className="h-[47px] p-[11px] w-full border-1 outline-none input lg:text-xs"
               />
             </div>
@@ -61,6 +113,8 @@ function SignUpForm () {
                 type="email"
                 name=""
                 id=""
+                value={data.email}
+                onChange={handleChange}
                 className="h-[47px] p-[11px] w-full border-1 outline-none input lg:text-xs"
               />
             </div>
@@ -71,6 +125,8 @@ function SignUpForm () {
                 type="number"
                 name=""
                 id=""
+                value={data.project_topic}
+                onChange={handleChange}
                 className="h-[47px] p-[11px] w-full border-1 outline-none input lg:text-xs"
               />
             </div>
@@ -82,6 +138,8 @@ function SignUpForm () {
                 name="category"
                 id="category"
                 className="h-[47px] p-[11px] w-full border-1 outline-none input lg:text-xs"
+                value={data.category}
+
               >
                 <option value="">Select your category</option>
                 <option value="frontend" className="text-strong-pink">
@@ -107,6 +165,8 @@ function SignUpForm () {
                 name="groupSize"
                 id="groupSize"
                 className="h-[47px] p-[11px] w-full border-1 outline-none input lg:text-xs"
+                value={data.group_size}
+
               >
                 <option value="">select</option>
                 <option value="1-5" className="text-strong-pink">
@@ -132,6 +192,8 @@ function SignUpForm () {
               name=""
               id=""
               className="bg-transparent h-[14px] cursor-pointer"
+              onChange={handleChange}
+              value={data.privacy_poclicy_accepted ? "true" : "false"}
             />
             <p className="text-[10px] lg:text-xs">
               I agreed with the event terms and conditions and privacy policy
@@ -142,7 +204,7 @@ function SignUpForm () {
           <Button label="Register Now" onSubmit={() => {}} width="w-full" />
         </div>
         <div className="w-full flex lg:hidden justify-center items-center">
-          <Button label="Submit" onSubmit={() => {}}
+          <Button label="Submit" onSubmit={() => handleSubmit}
           width="w-[372px]"
           />
         </div>
