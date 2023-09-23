@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import RegisterImage from "@/app/assets/images/3d-graphic-designer-showing-thumbs-up-png 1.png";
 import ColoredStar from "@/app/assets/icons/coloredStar.svg";
 import Star from "@/app/assets/icons/star.svg";
@@ -9,16 +9,18 @@ import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import Guy from "@/app/assets/icons/guy.svg";
 import Lady from "@/app/assets/icons/lady.svg";
+import modal from "@/app/assets/images/modal.svg";
 import Button from "../constant/Button";
 
 function Page() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [team_name, setTeamName] = useState("");
   const [phone_number, setPhoneNumber] = useState("");
   const [project_topic, setProjectTopic] = useState("");
-  const [group_size, setGroupSize] = useState("");
-  const [privacy_policy_accepted, setPrivacyPolicyAccepted] = useState(false);
-  const [category, setCategory] = useState("");
+  const [group_size, setGroupSize] = useState(1); // Default to 1-5
+  const [privacy_poclicy_accepted, setPrivacyPolicyAccepted] = useState(false);
+  const [category, setCategory] = useState(""); // Initialize as an empty string
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [team_nameError, setTeam_nameError] = useState("");
@@ -27,10 +29,30 @@ function Page() {
   const [projectTopicError, setProjectTopicError] = useState("");
   const [groupSizeError, setGroupSizeError] = useState("");
   const [categoryError, setCategoryError] = useState("");
-  const [privacyPolicyAcceptedError, setPrivacyPolicyAcceptedError] =
-    useState("");
+  const [privacyPolicyAcceptedError, setPrivacyPolicyAcceptedError] = useState("");
 
-  async function handleSubmit(event: React.FormEvent) {
+    const [formData, setFormData] = useState({
+    team_name: "",
+    email: "",
+    phone_number: "",
+    project_topic: "",
+    group_size: "",
+    privacy_poclicy_accepted: false,
+    category: "",
+  });
+  if (isModalOpen) {
+    console.log("success");
+  }
+
+  const categoryOptions = {
+    frontend: "Frontend",
+    backend: "Backend",
+    "ui/ux": "UI/UX",
+    devOps: "DevOps",
+    cybersecurity: "Cybersecurity",
+  };
+
+  async function handleSubmit(event: any) {
     event.preventDefault();
     console.log("Form submitted");
 
@@ -66,20 +88,20 @@ function Page() {
     }
 
     if (!group_size) {
-      setGroupSizeError("Please enter your group size");
+      setGroupSizeError("Please select your group size");
       isValid = false;
     } else {
       setGroupSizeError("");
     }
 
     if (!category) {
-      setCategoryError("Please enter your category");
+      setCategoryError("Please select your category");
       isValid = false;
     } else {
       setCategoryError("");
     }
 
-    if (!privacy_policy_accepted) {
+    if (!privacy_poclicy_accepted) {
       setPrivacyPolicyAcceptedError("Please accept our privacy policy");
       isValid = false;
     } else {
@@ -101,13 +123,14 @@ function Page() {
         project_topic,
         group_size,
         category,
-        privacy_policy_accepted,
-      });
+        privacy_poclicy_accepted,
+      }
+      );
 
       if (response.status === 200 || response.status === 201) {
         setEmail("");
         setCategory("");
-        setGroupSize("");
+        setGroupSize(1); // Reset to default value (1-5)
         setPhoneNumber("");
         setProjectTopic("");
         setTeamName("");
@@ -128,6 +151,10 @@ function Page() {
     }
   }
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="w-full h-full main_bg relative p-[8%] overflow-clip">
       <div className="w-full h-full absolute top-0 left-0 z-10">
@@ -139,17 +166,17 @@ function Page() {
         <Image
           src={Star}
           alt="Star"
-            className="absolute w-[20px] object-contain left-[59%] top-[32%]"
+          className="absolute w-[20px] object-contain left-[59%] top-[32%]"
         />
         <Image
           src={Star}
           alt="Star"
-            className="absolute w-[20px] object-contain left-[35%] top-[87%]"
+          className="absolute w-[20px] object-contain left-[35%] top-[87%]"
         />
         <Image
           src={Star}
           alt="purple flare"
-            className="absolute z-10 opacity-40 object-contain top-[0%] right-[-550px]"
+          className="absolute z-10 opacity-40 object-contain top-[0%] right-[-550px]"
         />
         <Image
           src={Star}
@@ -164,7 +191,7 @@ function Page() {
         <div className="w-full lg:w-[50%] h-full">
           <form
             className="w-full h-fit flex flex-col gap-10"
-            onClick={handleSubmit}
+            onSubmit={handleSubmit}
           >
             <h2 className="font-clash-display text-[20px] max-w-[200px] md:w-full font-semibold text-strong-pink">
               Register
@@ -260,9 +287,9 @@ function Page() {
                     className="h-[47px] p-[11px] w-full border-1 text-[#000] outline-none input lg:text-xs"
                     required
                   >
-                      {categoryError && (
-                        <p className="text-red-500">{categoryError}</p>
-                      )}
+                    {categoryError && (
+                      <p className="text-red-500">{categoryError}</p>
+                    )}
                     <option value="">Select your category</option>
                     <option value="frontend" className="text-strong-pink">
                       Frontend
@@ -289,7 +316,8 @@ function Page() {
                     className="h-[47px] p-[11px] w-full border-1 text-[#000] outline-none input lg:text-xs"
                     required
                     value={group_size}
-                    onChange={(e) => setGroupSize(e.target.value)}
+                    onChange={(e) => setGroupSize(parseInt(e.target.value))}
+
                   >
                     {groupSizeError && (
                       <p className="text-red-500">{groupSizeError}</p>
@@ -314,14 +342,14 @@ function Page() {
               </p>
               <div className="flex items-center gap-2">
                 <input
-              type="checkbox"
-              name=""
-              id="privacy_policy_accepted"
-              className="bg-transparent h-[14px] cursor-pointer"
-              required
-              checked={privacy_policy_accepted}
-              onChange={(e) => setPrivacyPolicyAccepted(e.target.checked)}
-            />
+                  type="checkbox"
+                  name=""
+                  id="privacy_poclicy_accepted"
+                  className="bg-transparent h-[14px] cursor-pointer"
+                  required
+                  checked={privacy_poclicy_accepted}
+                  onChange={(e) => setPrivacyPolicyAccepted(e.target.checked)}
+                />
                 {privacyPolicyAcceptedError && (
                   <p className="text-red-500">{privacyPolicyAcceptedError}</p>
                 )}
@@ -335,7 +363,11 @@ function Page() {
               onClick={handleSubmit}
               className="w-full hidden lg:flex justify-center items-center"
             >
-              <Button label="Register Now" width="w-full" />
+              <Button
+                label={loading ? "Submitting..." : "Register Now"}
+                width="w-full"
+                type="submit"
+              />
             </div>
             <div
               onClick={handleSubmit}
@@ -344,11 +376,31 @@ function Page() {
               <Button
                 label={loading ? "Submitting..." : "Register Now"}
                 width="w-[372px]"
+                type="submit"
               />
             </div>
           </form>
           {error && <p className="text-red-500">{error}</p>}
-          <ToastContainer />
+          {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="flex flex-col items-center justify-center w-[80%] max-w-lg p-4 rounded-lg shadow-lg  bg-[#150E28]">
+            <Image src={modal} alt="modal" />
+            <h2 className="text-2xl font-bold mb-4">
+             
+            </h2>
+            <h2 className="text-2xl font-bold mb-4">
+            Congratulations
+            </h2>
+            <p>
+              Yes, it was easy and you did it! check your mail box for next step
+            </p>
+            <div className="mt-4 flex justify-center">
+              <button onClick={closeModal} className="py-2 px-28 text-[16px] w-full rounded-sm cursor-pointer bg-button-gradient">Back</button>
+            </div>
+          </div>
+        </div>
+      )}
+          {/* <ToastContainer /> */}
         </div>
       </div>
     </div>
@@ -356,3 +408,4 @@ function Page() {
 }
 
 export default Page;
+

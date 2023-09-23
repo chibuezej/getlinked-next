@@ -5,6 +5,7 @@ interface GradientButtonProps {
   onSubmit?: (e: any) => void;
   width?: string;
   onClick?: () => void;
+  type: "submit" | "button";
 }
 
 const gradientStyle = {
