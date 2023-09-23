@@ -45,10 +45,9 @@ function Page() {
     }
 
     setLoading(true);
-    
-    const apiEndpoint = process.env.NEXT_PUBLIC_API_ENDPOINT
+
     try {
-      const response = await axios.post(apiEndpoint, {
+      const response = await axios.post('https://backend.getlinked.ai/hackathon/contact-form', {
         first_name,
         email,
         message,
@@ -65,7 +64,6 @@ function Page() {
 
       console.log(response, "res");
 
-      // Handle successful response here, e.g., show a success message or redirect
     } catch (error) {
       toast.error("An error occurred. Please try again later.");
     } finally {
