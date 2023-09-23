@@ -1,58 +1,41 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import Image from "next/image";
 import Button from "../constant/Button";
 import Guy from "@/app/assets/icons/guy.svg";
 import Lady from "@/app/assets/icons/lady.svg";
 
-function SignUpForm () {
-
-  const [data, setData] = useState({
-   "id": "",
-    "email": "",
-    "team_name": "",
-    "phone_number": "",
-    "project_topic": "",
-    "group_size": "",
-    "privacy_poclicy_accepted": true,
-    "date_created": "",
-    "last_updated": "",
-    "category": ""
+function SignUpForm() {
+  const [formData, setFormData] = useState({
+    team_name: "",
+    email: "",
+    phone_number: "",
+    project_topic: "",
+    group_size: "",
+    privacy_policy_accepted: false,
+    category: "",
   });
 
-  // const handleChange = (e: any) => {
-  //   const { name, value } = e.target;
-  //   setData({ ...data, [name]: value });
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
 
-  //   console.log(data);
-  // }
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/hackathon/registration",
+        formData
+      );
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const { name, value } = e.target;
-  setData({ ...data, [name]: value });
+      // Handle the response here if needed
+      console.log("API Response:", response.data);
 
-  console.log(data);
-}
+      // You can also navigate to a success page or show a success message
+    } catch (error) {
+      // Handle errors here
+      console.error("Error:", error);
+    }
+  };
 
-const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  axios.post("http://localhost:3000/hackathon/registration", {
-    "id": "",
-    "email": "",
-    "team_name": "",
-    "phone_number": "",
-    "project_topic": "",
-    "group_size": "",
-    "privacy_poclicy_accepted": true,
-    "date_created": "",
-    "last_updated": "",
-    "category": ""
-  })
-  console.log(data);
-  // navigate("/Register");
-}
-
+  console.log(formData, "formData");
 
   return (
     <div className="min-w-full min-h-full main_bg p-[4%] flex flex-col gap-8">
@@ -81,27 +64,31 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         <div className="flex flex-col gap-[15px] lg:gap-[29px]">
           <div className="w-full h-fit flex flex-col lg:flex-row items-center justify-between gap-[15px] lg:gap-0">
             <div className="w-full lg:w-[47%] flex flex-col gap-[11px]">
-              <label htmlFor="teamName">Team&apos;s name</label>
+              <label htmlFor="teamName">Teams name:</label>
               <input
                 placeholder="Enter the name of your group"
                 type="text"
                 name=""
-                id=""
-                onChange={handleChange}
-                value={data.team_name}
-                className="h-[47px] p-[11px] w-full border-1 outline-none input lg:text-xs"
+                id="teamName"
+                required
+                className="h-[47px] p-[11px] w-full border-1 outline-none text-[#000] input lg:text-xs"
+                onChange={(e) =>
+                  setFormData({ ...formData, team_name: e.target.value })
+                }
               />
             </div>
             <div className="w-full lg:w-[47%] flex flex-col gap-[11px]">
               <label htmlFor="phone">Phone</label>
               <input
                 placeholder="Enter your phone number"
+                required
                 type="number"
                 name=""
                 id=""
-                value={data.phone_number}
-                onChange={handleChange}
-                className="h-[47px] p-[11px] w-full border-1 outline-none input lg:text-xs"
+                className="h-[47px] p-[11px] w-full border-1 outline-none text-[#000] input lg:text-xs"
+                onChange={(e) =>
+                  setFormData({ ...formData, phone_number: e.target.value })
+                }
               />
             </div>
           </div>
@@ -111,11 +98,13 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
               <input
                 placeholder="Enter your email address"
                 type="email"
+                required
                 name=""
                 id=""
-                value={data.email}
-                onChange={handleChange}
-                className="h-[47px] p-[11px] w-full border-1 outline-none input lg:text-xs"
+                className="h-[47px] p-[11px] w-full border-1 text-[#000] lg:text-xs"
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
               />
             </div>
             <div className="w-full lg:w-[47%] flex flex-col gap-[11px]">
@@ -125,9 +114,11 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
                 type="number"
                 name=""
                 id=""
-                value={data.project_topic}
-                onChange={handleChange}
-                className="h-[47px] p-[11px] w-full border-1 outline-none input lg:text-xs"
+                required
+                className="h-[47px] p-[11px] w-full border-1 text-[#000] outline-none input lg:text-xs"
+                onChange={(e) =>
+                  setFormData({ ...formData, project_topic: e.target.value })
+                }
               />
             </div>
           </div>
@@ -137,9 +128,11 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
               <select
                 name="category"
                 id="category"
-                className="h-[47px] p-[11px] w-full border-1 outline-none input lg:text-xs"
-                value={data.category}
-
+                className="h-[47px] p-[11px] w-full border-1 text-[#000] outline-none input lg:text-xs"
+                onChange={(e) =>
+                  setFormData({ ...formData, category: e.target.value })
+                }
+                required
               >
                 <option value="">Select your category</option>
                 <option value="frontend" className="text-strong-pink">
@@ -164,9 +157,11 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
               <select
                 name="groupSize"
                 id="groupSize"
-                className="h-[47px] p-[11px] w-full border-1 outline-none input lg:text-xs"
-                value={data.group_size}
-
+                className="h-[47px] p-[11px] w-full border-1 text-[#000] outline-none input lg:text-xs"
+                onChange={(e) =>
+                  setFormData({ ...formData, group_size: e.target.value })
+                }
+                required
               >
                 <option value="">select</option>
                 <option value="1-5" className="text-strong-pink">
@@ -192,8 +187,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
               name=""
               id=""
               className="bg-transparent h-[14px] cursor-pointer"
-              onChange={handleChange}
-              value={data.privacy_poclicy_accepted ? "true" : "false"}
+              required
             />
             <p className="text-[10px] lg:text-xs">
               I agreed with the event terms and conditions and privacy policy
@@ -204,13 +198,11 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
           <Button label="Register Now" onSubmit={() => {}} width="w-full" />
         </div>
         <div className="w-full flex lg:hidden justify-center items-center">
-          <Button label="Submit" onSubmit={() => handleSubmit}
-          width="w-[372px]"
-          />
+          <Button label="Submit" width="w-[372px]" onSubmit={handleSubmit} />
         </div>
       </form>
     </div>
   );
-};
+}
 
 export default SignUpForm;

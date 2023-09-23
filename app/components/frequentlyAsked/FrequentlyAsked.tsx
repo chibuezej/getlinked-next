@@ -28,7 +28,7 @@ const frequentlyAskedQuestions = [
 
 function FrequentlyAsked() {
   return (
-    <div> <section className={`py-8 border-b border-b-[#FFFFFF2E] lg:px-28 px-4 flex lg:flex-row flex-col-reverse items-center`}>
+    <div className={`py-8 border-b border-b-[#FFFFFF2E] lg:px-28 px-4 flex lg:flex-row flex-col-reverse items-center`}>
     <div className={`lg:w-[50%] w-full relative lg:px-7`}>
       <h2 className={`lg:text-3xl lg:text-left text-center text-2xl lg:w-[50%] lg:mt-0 mt-9 py-3 font-bold font-clash-display`}>
         Frequently Asked <span className={`text-[#D434FE]`}>Questions</span>
@@ -65,7 +65,6 @@ function FrequentlyAsked() {
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8/eCBPQMRgHFUIX0VAgB4UB0vFSLebwAAAABJRU5ErkJggg=="
       />
     </div>
-  </section>
 </div>
   )
 }

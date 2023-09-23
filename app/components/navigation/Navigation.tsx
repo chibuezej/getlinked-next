@@ -1,76 +1,116 @@
-"use client"
-import React, { useState } from "react";
-import logo from "@/app/assets/icons/getlinked.svg";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import Button from "@/app/constant/Button";
+import { useState } from "react";
+import { usePathname, useRouter } from 'next/navigation';
+import logo from "@/app/assets/icons/getlinked.svg";
 import menu from "@/app/assets/icons/menu.svg"
-const data = [
-  { name: "Timelines", href: "/" },
-  { name: "Overview", href: "/" },
-  { name: "FAQs", href: "/" },
-  { name: "Contact", href: "/Contact" }, 
-];
+import close from "@/app/assets/icons/close.svg"
+import Button from "@/app/constant/Button";
 
-function Navigation() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+const NavList = [
+    {
+      "name": "Timeline",
+      "route": "/"
+    },
+    {
+      "name": "Overview",
+      "route": "#overview"
+    },
+    {
+      "name": "FAQs",
+      "route": "#faq"
+    },
+    {
+      "name": "Contact",
+      "route": "/Contact"
+    }
+]
+
+
+const Navbar = (): React.ReactNode => {
+  const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const pushToRegister = () => router.push('/Register');
 
   return (
-    <header className="bg-[#150e28] text-white border-b  border-opacity-18">
-      <nav className="flex justify-between items-center py-4 px-6">
-        <Link href="/">
-        <div>
-          <Image src={logo} alt="get-linked" />
-        </div>
-        </Link>
-        <div className="hidden lg:flex justify-evenly items-center gap-12">
-          {data.slice(0, 3).map((item, index) => (
-            <Link key={index} href={item.href}>
-              <p className="p3-medium hover:scale-110 hover:text-gray-700">
-                {item.name}
-              </p>
-            </Link>
-          ))}
-          <Link href="/Register"> 
-            <p className="p3-medium hover:scale-110 hover:text-gray-700">
-              Register
-            </p>
-          </Link>
-        </div>
+    <header className={`border-b relative font-montserrat text-white border-b-[#FFFFFF2E] bg-transparent flex items-center justify-between py-7 lg:px-16 px-4`}>
+      <Link href={`/`}>
+        <Image
+          src={logo}
+          width={100}
+          height={100}
+          className={`w-[8rem]`}
+          alt="Get Linked Image"
+        />
+      </Link>
 
-        <div className="lg:hidden">
-          <p
-            className="p3-medium hover:scale-110 hover:text-gray-700"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-           <Image src={menu} alt="Menu" />
-          </p>
-          {mobileMenuOpen && (
-            <div className="mt-2 menu-container bg-[#150e28] absolute top-14 right-0 w-[396px] h-[442px]">
-              {data.map((item, index) => (
-                <Link key={index} href={item.href}>
-                  <p
-                    className="block p3-medium hover:scale-110 hover:text-gray-700"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </p>
-                </Link>
-              ))}
-              <Link href="/Contact"> 
-                <p
-                  className="block p3-medium hover:scale-110 hover:text-gray-700"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Contact
+      <section className={`space-x-24 lg:flex hidden items-center`}>
+        <ul className={`space-x-12 text-sm`}>
+          {NavList.map((option, index) => (
+            <li key={index} className={`float-left`}>
+              <Link href={option.route}>
+                <p className={`hover:bg-clip-text hover:bg-text-grad hover:text-transparent duration-150 ${pathname.startsWith(option.route) && "bg-clip-text bg-text-grad text-transparent"}`}>
+                  {option.name}
                 </p>
               </Link>
-            </div>
-          )}
+            </li>
+          ))}
+        </ul>
+
+        <div className={`w-[9rem] lg:block hidden duration-150`}>
+          <button onClick={() => { pushToRegister() }}>
+            <Button label="Register" />
+          </button>
         </div>
-      </nav>
+      </section>
+
+      <button onClick={() => { setMobileNavOpen(true) }} className={`p-2 lg:hidden block`}>
+        <Image
+          src={menu}
+          alt="Hamburger Icon"
+          width={19}
+          height={19}
+          className={`w-[19px]`}
+        />
+      </button>
+
+      <div onClick={() => { setMobileNavOpen(false) }} className={`${mobileNavOpen ? "translate-y-0" : "-translate-y-[100%]"} z-50 duration-300 w-full absolute top-0 left-0 py-4 px-14 rounded-md bg-[#150E28]`}>
+        <div className={`flex items-center justify-end`}>
+          <button onClick={() => { setMobileNavOpen(false) }}>
+            <Image
+              src={close}
+              alt="Close Nav"
+              width={5}
+              height={10}
+              className={`w-[30px] object-center`}
+            />
+          </button>
+        </div> <br />
+
+        <ul className={``}>
+          {NavList.map((option, index) => (
+            <li key={index} className={`my-5`}>
+              <Link href={option.route}>
+                <p>
+                  {option.name}
+                </p>
+              </Link>
+            </li>
+          ))}
+        </ul> <br />
+
+        <div className={`w-[10rem]`}>
+          <button onClick={() => { pushToRegister() }}>
+          <Button label="Register" />
+          </button>
+        </div> <br /><br />
+      </div>
     </header>
-  );
+  )
 }
 
-export default Navigation;
+export default Navbar;
